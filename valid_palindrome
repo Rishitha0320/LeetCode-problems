@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+#include <cctype>  // For isalnum and tolower
+
+using namespace std;
+
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        int l = 0;
+        int r = s.length() - 1;
+
+        while (l < r) {
+            if (!isalnum(s[l])) {
+                l++;
+            } 
+            else if (!isalnum(s[r])) {
+                r--;
+            } 
+            else {
+                if (tolower(s[l]) != tolower(s[r])) {
+                    return false;
+                }
+                l++;
+                r--;
+            }
+        }
+        return true;
+    }
+};
+
+int main() {
+    Solution solution;
+
+    // Test cases
+    string s1 = "A man, a plan, a canal: Panama";
+    string s2 = "race a car";
+    string s3 = " ";
+
+    // Output the results
+    cout << "Test case 1: " << s1 << endl;
+    cout << "Is palindrome? " << (solution.isPalindrome(s1) ? "true" : "false") << endl;
+
+    cout << "Test case 2: " << s2 << endl;
+    cout << "Is palindrome? " << (solution.isPalindrome(s2) ? "true" : "false") << endl;
+
+    cout << "Test case 3: " << s3 << endl;
+    cout << "Is palindrome? " << (solution.isPalindrome(s3) ? "true" : "false") << endl;
+
+    return 0;
+}
