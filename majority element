@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int size = nums.size();
+        unordered_map<int, int> freq;
+
+        // Count the frequency of each element
+        for (int n : nums) {
+            freq[n]++;
+        }
+
+        // Find the element that appears more than ⌊n/2⌋ times
+        for (auto i : freq) {
+            if (i.second > size / 2) {  // Correct condition
+                return i.first;
+            }
+        }
+        
+        return -1; // Should never reach here since majority element is guaranteed
+    }
+};
+
+int main() {
+    Solution sol;
+    vector<int> nums1 = {3, 2, 3};
+    vector<int> nums2 = {2, 2, 1, 1, 1, 2, 2};
+
+    cout << "Output 1: " << sol.majorityElement(nums1) << endl; // Output: 3
+    cout << "Output 2: " << sol.majorityElement(nums2) << endl; // Output: 2
+
+    return 0;
+}
