@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    int diagonalSum(vector<vector<int>>& mat) {
+        int sum = 0;
+        for (int i = 0; i < mat.size(); i++) {
+            sum = sum + mat[i][i];  // Main diagonal [(0,0), (1,1), (2,2)]
+        }
+        for (int i = 0; i < mat.size(); i++) {
+            int n = mat[i].size() - 1;  // Column size
+            if (i != n - i) {
+                sum = sum + mat[i][n - i];  // Anti-diagonal [mat[0][2], mat[1][1], mat[2][0]]
+            }
+        }
+        return sum;
+    }
+};
+
+int main() {
+    Solution sol;
+
+    // Example test case
+    vector<vector<int>> mat = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    cout << "Diagonal Sum: " << sol.diagonalSum(mat) << endl;  // Expected output: 25
+
+    return 0;
+}
