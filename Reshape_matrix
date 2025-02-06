@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<vector<int>> matrixReshape(vector<vector<int>>& mat, int r, int c) {
+        vector<vector<int>>mat1(r,vector<int>(c,0));//rows , cols set to 0
+        int rows=mat.size();int ROW=0;//used for new matrix
+        int cols=mat[0].size();
+        int COL=0;
+        if(rows*cols!=r*c){
+                      return mat;
+        }
+        for(int i=0;i<rows;i++){
+                  for(int j=0;j<cols;j++){
+                             mat1[ROW][COL] =mat[i][j];
+                             COL++; //  c=0//c=1
+                             if(COL==c){ //
+                             ROW++;
+                             COL=0;
+                             }
+                  }
+        }
+        return mat1;
+    }
+};
