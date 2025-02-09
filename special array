@@ -1,0 +1,47 @@
+import java.util.Arrays;
+
+class Solution {
+    public int specialArray(int[] nums) {
+        // Sort the array (this makes it easier to count elements >= x)
+        Arrays.sort(nums);
+
+        // Traverse for each x from 1 to nums.length
+        for (int x = 1; x <= nums.length; x++) {
+            int count = 0;
+
+            // Traverse through the array and count elements >= x
+            for (int i : nums) {
+                if (i >= x) {
+                    count++;
+                }
+            }
+
+            // If count is equal to x, return x as the solution
+            if (x == count) {
+                return x;
+            }
+        }
+        
+        // If no valid x found, return -1
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        // Test case 1
+        Solution solution = new Solution();
+        int[] nums1 = {0, 0, 3, 4, 5};
+        System.out.println("Test Case 1: " + solution.specialArray(nums1)); // Output: 3
+
+        // Test case 2
+        int[] nums2 = {3, 3, 4, 5, 6};
+        System.out.println("Test Case 2: " + solution.specialArray(nums2)); // Output: -1
+
+        // Test case 3
+        int[] nums3 = {0, 0, 0, 0};
+        System.out.println("Test Case 3: " + solution.specialArray(nums3)); // Output: -1
+
+        // Test case 4
+        int[] nums4 = {1, 2, 3, 4};
+        System.out.println("Test Case 4: " + solution.specialArray(nums4)); // Output: 2
+    }
+}
