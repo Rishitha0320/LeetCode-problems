@@ -1,0 +1,13 @@
+class Solution {
+    public char nextGreatestLetter(char[] letters, char target) {
+        
+        for(  char ch:letters){
+              if(target < ch){
+                return ch;
+              }
+        }
+        // char ch=letters[0];
+
+        return letters[0];
+    }
+}
