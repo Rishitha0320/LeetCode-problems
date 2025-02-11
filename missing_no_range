@@ -1,0 +1,35 @@
+import java.util.Arrays;
+
+class Solution {
+    public int missingNumber(int[] nums) {
+        int n = nums.length;
+        Arrays.sort(nums); // Sort the array
+
+        // Check for the missing number
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != i) {
+                return i; // Return the missing number
+            }
+        }
+
+        // If no number is missing in the sequence, return n
+        return n;
+    }
+
+    // Main method to test the function
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Test Cases
+        int[] nums1 = {3, 0, 1}; // Missing number = 2
+        int[] nums2 = {0, 1}; // Missing number = 2
+        int[] nums3 = {9,6,4,2,3,5,7,0,1}; // Missing number = 8
+        int[] nums4 = {0}; // Missing number = 1
+
+        // Print Results
+        System.out.println("Missing Number: " + solution.missingNumber(nums1)); // Output: 2
+        System.out.println("Missing Number: " + solution.missingNumber(nums2)); // Output: 2
+        System.out.println("Missing Number: " + solution.missingNumber(nums3)); // Output: 8
+        System.out.println("Missing Number: " + solution.missingNumber(nums4)); // Output: 1
+    }
+}
