@@ -1,0 +1,59 @@
+public class Solution {
+    
+    public int thirdMax(int[] nums) {
+        // size less than 3, return max number
+        // = 3, 3rd max 
+        // greater than 3, check for non duplicates, 3rd max
+
+        int max = Integer.MIN_VALUE;
+        int n = nums.length;
+
+        // Case 1: If the array size is less than 3, return the maximum number
+        if (n < 3) {
+            for (int i = 0; i < n; i++) {
+                if (nums[i] > max) {
+                    max = nums[i];
+                }
+            }
+            return max;
+        }
+
+        // Case 2: If the array has 3 or more elements, check for the third maximum
+        HashSet<Integer> hs = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            hs.add(nums[i]); // Add elements to the HashSet to remove duplicates
+        }
+
+        ArrayList<Integer> al = new ArrayList<>(hs);
+
+        // If there are less than 3 distinct numbers, return the maximum number
+        if (al.size() < 3) {
+            Collections.sort(al);  // Sort in ascending order
+            return al.get(al.size() - 1); // Return the largest element
+        }
+
+        // Case 3: Sort the distinct numbers and return the third largest
+        Collections.sort(al);
+        return al.get(al.size() - 3); // Return the third largest element
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Test case 1
+        int[] nums1 = {3, 2, 1};
+        System.out.println("Third Maximum (Test Case 1): " + solution.thirdMax(nums1));  // Output: 1
+
+        // Test case 2
+        int[] nums2 = {1, 2};
+        System.out.println("Third Maximum (Test Case 2): " + solution.thirdMax(nums2));  // Output: 2
+
+        // Test case 3
+        int[] nums3 = {2, 2, 3, 1};
+        System.out.println("Third Maximum (Test Case 3): " + solution.thirdMax(nums3));  // Output: 1
+
+        // Test case 4: array with duplicates
+        int[] nums4 = {1, 2, 2, 5, 3};
+        System.out.println("Third Maximum (Test Case 4): " + solution.thirdMax(nums4));  // Output: 3
+    }
+}
