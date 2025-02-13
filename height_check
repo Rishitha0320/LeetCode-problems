@@ -1,0 +1,30 @@
+import java.util.*;
+
+class Solution {
+    public int heightChecker(int[] heights) {
+        int count = 0;
+
+        // Step 1: Clone the original array and sort it
+        int[] sortedHeights = heights.clone();
+        Arrays.sort(sortedHeights);
+
+        // Step 2: Compare original and sorted arrays
+        for (int i = 0; i < heights.length; i++) {
+            if (heights[i] != sortedHeights[i]) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+
+        // Example test case
+        int[] heights = {1, 1, 4, 2, 1, 3};
+        int result = sol.heightChecker(heights);
+
+        System.out.println("Number of students in incorrect positions: " + result);
+    }
+}
