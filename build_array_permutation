@@ -1,0 +1,24 @@
+class Solution {
+    public int[] buildArray(int[] nums) {
+        //new approch without new array 
+        // reduce space complexity from o(n) to o(1)
+        /*
+        encoding =>(nums[i]%n)*n 
+        all nums[i] is small than n ,then *5 =>encode 
+
+        decode => nums[i]/n; //same number , encodede, decode same value,
+        retrive by nums[i]/5;
+        */
+        int n=nums.length;
+      
+        for(int i=0;i<n;i++){
+          nums[i]=nums[i]+(nums[nums[i]]%n)*n;
+          
+        }
+        //use another loop to get the new updated values , there fore we can get new old value
+for(int i=0;i<n;i++){
+    nums[i]=nums[i]/n;
+}
+return nums;
+    }
+}
