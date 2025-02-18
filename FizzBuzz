@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    // Function to return the FizzBuzz list
+    public List<String> fizzBuzz(int n) {
+        List<String> al = new ArrayList<>();  // Create an ArrayList to store the result
+
+        for (int i = 1; i <= n; i++) {  // Loop through numbers from 1 to n
+            // Check for the FizzBuzz condition
+            if (i % 3 == 0 && i % 5 == 0) {
+                al.add("FizzBuzz");
+            }
+            // Check for the Fizz condition (divisible by 3)
+            else if (i % 3 == 0) {
+                al.add("Fizz");
+            }
+            // Check for the Buzz condition (divisible by 5)
+            else if (i % 5 == 0) {
+                al.add("Buzz");
+            }
+            // Otherwise, just add the number as a string
+            else {
+                al.add(String.valueOf(i));  // Convert number to String
+            }
+        }
+
+        return al;  // Return the list containing the results
+    }
+
+    // Main method to test the fizzBuzz function
+    public static void main(String[] args) {
+        Solution solution = new Solution();  // Create an instance of the Solution class
+        int n = 15;  // Example input
+
+        // Get the FizzBuzz list for the input n
+        List<String> result = solution.fizzBuzz(n);
+
+        // Print the result
+        System.out.println(result);
+    }
+}
