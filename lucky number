@@ -1,0 +1,55 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        // Sample matrix for testing
+        int[][] matrix = {
+            {3, 7, 8},
+            {9, 11, 13},
+            {15, 16, 17}
+        };
+        
+        // Create an instance of Solution and call the luckyNumbers method
+        Solution sol = new Solution();
+        List<Integer> luckyNums = sol.luckyNumbers(matrix);
+        
+        // Print the result
+        System.out.println("Lucky Numbers: " + luckyNums);
+    }
+}
+
+class Solution {
+    public List<Integer> luckyNumbers(int[][] mat) {
+        List<Integer> luckyList = new ArrayList<>();
+        
+        // Iterate over each row of the matrix
+        for (int i = 0; i < mat.length; i++) {
+            int min = mat[i][0];
+            int minColIndex = 0;
+            
+            // Find the minimum element in the current row and its column index
+            for (int j = 0; j < mat[i].length; j++) {
+                if (mat[i][j] < min) {
+                    min = mat[i][j];
+                    minColIndex = j;
+                }
+            }
+            
+            // Check if this minimum element is the maximum in its column
+            boolean isLucky = true;
+            for (int k = 0; k < mat.length; k++) {
+                if (mat[k][minColIndex] > min) {
+                    isLucky = false;
+                    break;
+                }
+            }
+            
+            // If it is a lucky number, add it to the list
+            if (isLucky) {
+                luckyList.add(min);
+            }
+        }
+        
+        return luckyList;
+    }
+}
