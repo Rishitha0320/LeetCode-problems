@@ -1,0 +1,30 @@
+class Solution {
+    public double average(int[] arr) {
+        
+     Arrays.sort(arr);
+       double avg;
+       int n=arr.length;int max=arr[0];int min=arr[0];
+      double sum=0;int count=0;
+       for(int i=1;i<n;i++){
+          if(arr[i] >max){
+            max=arr[i];
+          }
+       }
+       for(int i=1;i<n;i++){
+          if(arr[i] <min){
+            min=arr[i];
+          }
+       }
+       for(int i=0;i<n;i++){
+                if(arr[i]!= max  &&  arr[i]!=min ){
+                     sum=sum+arr[i];
+                     count++;
+                }
+
+
+       }
+       avg=sum/count;
+       return avg;
+
+    }
+}
