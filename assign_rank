@@ -1,0 +1,29 @@
+class Solution {
+    public int[] arrayRankTransform(int[] arr) {
+
+       int new_arr[]=arr.clone(); 
+       Arrays.sort(new_arr); //sort new array 
+        int n=arr.length;
+        int rank=1;
+HashMap<Integer,Integer> hm=new HashMap<>();
+    
+
+       for( int i=0;i<new_arr.length;i++){
+
+        //assign values to the new array , then map it 
+       //avoid duplication by some condition
+
+     if(!hm.containsKey(new_arr[i])){
+      hm.put(new_arr[i],rank++);
+      }
+        
+                }
+                
+int res[]=new int[n];
+                for( int i=0;i<n;i++){
+                       res[i]=hm.get(arr[i]);
+                }
+                return res;
+
+    }
+}
