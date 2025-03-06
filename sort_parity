@@ -1,0 +1,28 @@
+class Solution {
+    public int[] sortArrayByParity(int[] nums) {
+        int l=0;int r=nums.length-1;
+        while(l<r){
+            
+            //left ->odd //right even 
+            if(nums[l]%2  >  nums[r]%2 ){
+            //    so change it as
+                     int temp=nums[l];
+                     nums[l]=nums[r];
+                      nums[r]=temp;
+            }
+            //now element swap 
+            //first ->even , 2nd ->odd
+
+            if(nums[l]%2==0 ){
+                    l++;
+            }
+            if(nums[r]%2==1 ){
+                    r--;
+            }
+
+
+
+        }
+        return nums;
+    }
+}
