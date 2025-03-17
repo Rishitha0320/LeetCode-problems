@@ -1,0 +1,19 @@
+class Solution {
+    public boolean checkIfPangram(String str) {
+           
+           str=str.toLowerCase();
+           HashSet<Character>hs=new HashSet<>();
+         char ch[]=str.toCharArray();
+           for(int i=0;i<ch.length;i++){
+             if(ch[i] >='a' && ch[i] <='z'){
+                     hs.add(ch[i]);
+             }
+           }
+if(hs.size()==26){
+return true;
+}
+
+return false;
+
+    }
+}
