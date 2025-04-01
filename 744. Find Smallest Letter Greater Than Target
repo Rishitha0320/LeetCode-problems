@@ -1,0 +1,43 @@
+class Solution {
+    public char nextGreatestLetter(char[] arr, char t) {
+        
+        // for(  char ch:letters){
+        //       if(target < ch){
+        //         return ch;
+        //       }
+        // }
+        // // char ch=letters[0];
+
+        // return letters[0];
+        int l=0;int r=arr.length-1;int mid=0;
+
+        while(l<=r){
+            
+            mid=l+(r-l)/2;
+            if(arr[mid] >t){
+                   r=mid;
+            }
+
+            if(  arr[mid]<t){
+               l=mid+1;
+            }
+        
+          if(arr[mid]==t){
+                   l=mid+1;
+          }
+
+if( arr[mid]>t){
+            if(arr[l]==arr[r]){
+            return arr[l];
+
+        }
+}
+
+        }
+      
+
+        return arr[0];
+
+
+    }
+}
